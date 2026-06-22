@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabrone - Salgados Congelados</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=5I-3GUkCfzSZkv-tj70vVabStfdmaZ1Eoy0F7oFe5LRoiqIUV_jypjR-spNk3TAuR6P1xF4vJYCDloClck--fP3Cywiqzk1dt8WadBTvm5Dn6GTVZORCtPrOJKQoexu5sFswGsJ5N2LTBLkihlpidIk3tItDFw7vUhjkZ4MGfj7KPPvGUkui4uKSFGfRYhUe9NR97REZhRUS2ugHW1GiEUrbZmwymn8N66KRQ0HMizI2sm5U2Vlo5awc8FCLJXOptflz-7XAjPcqwi4LLl1-fU2pcWXoIFuLqykZMUX6QQ6DePahQxLr8zHjtZog-tiYmNB6sRokdeLl-9sw0vVUjQ" charset="UTF-8"></script><script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Chewy&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#fcf6f0',
+                            cream: '#f7ebd5',
+                            orange: '#d96c21',
+                            brown: '#6b320b',
+                            dark: '#4a2105'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        display: ['Chewy', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fcf6f0; color: #4a2105; }
+        .bg-cream { background-color: #f7ebd5; }
+        .text-brand-orange { color: #d96c21; }
+        .text-brand-brown { color: #6b320b; }
+        .btn-whatsapp { background-color: #25D366; color: white; }
+        .btn-whatsapp:hover { background-color: #1ebe57; }
+        
+        /* Custom scrollbar for the cart */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #d96c21; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b320b; }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-brand-cream shadow-md py-8 text-center border-b-4 border-brand-orange">
+        <div class="container mx-auto px-4 flex flex-col items-center">
+            <!-- Brand Logo (Text representing the logo) -->
+            <div class="mb-3 relative inline-block">
+                <i class="fas fa-fire-alt absolute -left-8 top-2 text-3xl text-brand-orange opacity-50"></i>
+                <h1 class="font-display text-5xl md:text-7xl text-brand-orange tracking-wide drop-shadow-md">SABRONE</h1>
+                <i class="fas fa-snowflake absolute -right-8 top-2 text-3xl text-blue-300 opacity-80"></i>
+            </div>
+            <p class="font-bold text-brand-brown tracking-widest uppercase text-sm md:text-lg mb-2">Salgados Congelados</p>
+            <div class="inline-flex items-center bg-white px-4 py-1 rounded-full shadow-sm text-sm text-brand-brown font-semibold mt-2">
+                <i class="fas fa-map-marker-alt text-brand-orange mr-2"></i> São José do Rio Preto - SP
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12 px-4 container mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-brand-brown leading-tight">Praticidade e Sabor<br>para o seu Dia a Dia!</h2>
+        <p class="max-w-2xl mx-auto text-gray-700 text-lg mb-8">Nossos salgados são preparados com ingredientes selecionados. Escolha a linha para fritura tradicional ou a exclusiva para Airfryer.</p>
+    </section>
+
+    <!-- Order System Section -->
+    <section class="pb-16 px-4 container mx-auto">
+        <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border-2 border-brand-cream">
+            
+            <!-- Menu / Form -->
+            <div class="w-full md:w-7/12 p-6 md:p-10 bg-brand-light relative">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-cream rounded-bl-full -z-10 opacity-50"></div>
+                <h3 class="text-2xl font-display tracking-wide mb-6 text-brand-orange border-b-2 border-brand-orange/30 pb-3 flex items-center">
+                    <i class="fas fa-utensils mr-3"></i> Monte seu Pedido
+                </h3>
+                
+                <div class="space-y-6">
+                    <!-- Opção de Preparo -->
+                    <div>
+                        <label class="block font-bold mb-3 text-brand-brown text-lg">1. Opção de Preparo (Pacote com 12 un.)</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="preparo" value="oleo" class="peer sr-only" checked onchange="updatePrice()">
+                                <div class="p-4 text-center rounded-xl border-2 border-gray-200 peer-checked:border-brand-orange peer-checked:bg-orange-50 hover:bg-gray-50 transition-all shadow-sm">
+                                    <div class="w-12 h-12 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-2">
+                                        <i class="fas fa-fire text-2xl text-brand-orange"></i>
+                                    </div>
+                                    <div class="font-bold text-brand-brown">Fritura no Óleo</div>
+                                    <div class="text-sm font-semibold text-brand-orange mt-1">R$ 30,00</div>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="preparo" value="airfryer" class="peer sr-only" onchange="updatePrice()">
+                                <div class="p-4 text-center rounded-xl border-2 border-gray-200 peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all shadow-sm">
+                                    <div class="w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-2">
+                                        <i class="fas fa-wind text-2xl text-blue-500"></i>
+                                    </div>
+                                    <div class="font-bold text-brand-brown">Airfryer</div>
+                                    <div class="text-sm font-semibold text-blue-600 mt-1">R$ 35,00</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Escolha do Sabor -->
+                    <div>
+                        <label class="block font-bold mb-3 text-brand-brown text-lg">2. Escolha o Sabor</label>
+                        <div class="relative">
+                            <select id="sabor" class="w-full p-4 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-brand-orange bg-white text-gray-700 font-medium appearance-none shadow-sm cursor-pointer hover:border-gray-300 transition-colors">
+                                <option value="Coxinha de Carne">Coxinha de Carne</option>
+                                <option value="Coxinha de Frango">Coxinha de Frango</option>
+                                <option value="Coxinha de Frango com Catupiry">Coxinha de Frango com Catupiry</option>
+                                <option value="Coxinha de Pernil">Coxinha de Pernil</option>
+                                <option value="Coxinha de Pernil com Geleia de Pimenta">Coxinha de Pernil com Geleia de Pimenta</option>
+                                <option value="Coxinha de Carne Seca com Cabotia">Coxinha de Carne Seca com Cabotia</option>
+                                <option value="Salsicha Empanada">Salsicha Empanada</option>
+                                <option value="Bolinha de Queijo">Bolinha de Queijo</option>
+                                <option value="Bolinha de Pizza">Bolinha de Pizza</option>
+                                <option value="Bolinha de Brócolis com Bacon e Catupiry">Bolinha de Brócolis com Bacon e Catupiry</option>
+                                <option value="Coxinha de Estrogonofe de Carne">Coxinha de Estrogonofe de Carne</option>
+                                <option value="Coxinha de Estrogonofe de Frango">Coxinha de Estrogonofe de Frango</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-orange">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quantidade e Botão -->
+                    <div class="flex items-end gap-4 pt-2">
+                        <div class="w-1/3">
+                            <label class="block font-bold mb-2 text-brand-brown">3. Quantidade</label>
+                            <input type="number" id="quantidade" min="1" value="1" class="w-full p-4 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-brand-orange bg-white text-center font-bold text-lg shadow-sm">
+                        </div>
+                        <div class="w-2/3">
+                            <button onclick="adicionarAoCarrinho()" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold py-4 px-4 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center justify-center text-lg">
+                                <i class="fas fa-cart-plus mr-2"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrinho / Resumo -->
+            <div class="w-full md:w-5/12 p-6 md:p-10 bg-white flex flex-col border-l border-gray-100">
+                <h3 class="text-2xl font-display tracking-wide mb-6 text-brand-brown border-b-2 border-gray-100 pb-3 flex items-center">
+                    <i class="fas fa-receipt mr-3 text-gray-400"></i> Resumo do Pedido
+                </h3>
+                
+                <div id="carrinho-vazio" class="flex-grow flex flex-col items-center justify-center text-gray-400 py-10 bg-gray-50 rounded-xl border border-dashed border-gray-200">
+                    <i class="fas fa-shopping-basket text-5xl mb-4 opacity-40 text-brand-orange"></i>
+                    <p class="font-medium text-center px-4">Seu carrinho está vazio.<br>Adicione salgados ao lado!</p>
+                </div>
+
+                <div id="carrinho-items" class="flex-grow overflow-y-auto hidden mb-4 space-y-3 max-h-80 pr-2">
+                    <!-- Items dynamically injected here -->
+                </div>
+
+                <div class="mt-auto pt-6 border-t border-gray-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-gray-500 font-medium">Total Estimado:</span>
+                        <span class="font-bold text-3xl text-brand-brown" id="total-pedido">R$ 0,00</span>
+                    </div>
+                    <button onclick="enviarWhatsApp()" id="btn-enviar" disabled class="w-full btn-whatsapp font-bold py-4 px-4 rounded-xl shadow-lg transition-all flex items-center justify-center text-lg disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5 group">
+                        <i class="fab fa-whatsapp text-2xl mr-2 group-hover:scale-110 transition-transform"></i> Finalizar no WhatsApp
+                    </button>
+                    <p class="text-center text-xs text-gray-400 mt-3"><i class="fas fa-info-circle mr-1"></i> Você revisará o pedido no WhatsApp antes de enviar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guias de Preparo Section -->
+    <section class="py-16 bg-brand-cream border-t-4 border-brand-orange">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-4xl font-display text-center text-brand-brown mb-12">Como Preparar seus Salgados</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Airfryer Guide -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-b-4 border-blue-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-100 text-blue-600 font-bold py-1 px-4 rounded-bl-2xl text-sm">Opção Airfryer</div>
+                    <h4 class="text-2xl font-bold text-brand-brown mb-6 flex items-center">
+                        <i class="fas fa-wind text-3xl mr-3 text-blue-500"></i> Na Airfryer
+                    </h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">1</span>
+                            <div><strong class="text-gray-800">Pré-aqueça a Airfryer:</strong> Programe em 200°C por 2 minutos.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">2</span>
+                            <div><strong class="text-gray-800">Adicione os Salgados:</strong> Distribua-os congelados em uma única camada na cesta.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">3</span>
+                            <div><strong class="text-gray-800">Cozinhe:</strong> Feche a Airfryer e aguarde 10 minutos.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-600 rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">4</span>
+                            <div><strong class="text-gray-800">Pronto!</strong> Seus salgados estão dourados e crocantes.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Fritura Guide -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-b-4 border-brand-orange relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-orange-100 text-brand-orange font-bold py-1 px-4 rounded-bl-2xl text-sm">Opção Óleo</div>
+                    <h4 class="text-2xl font-bold text-brand-brown mb-6 flex items-center">
+                        <i class="fas fa-fire text-3xl mr-3 text-brand-orange"></i> Fritura no Óleo
+                    </h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="bg-orange-100 text-brand-orange rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">1</span>
+                            <div><strong class="text-gray-800">Aqueça o Óleo:</strong> Aguarde até que o óleo comece a ferver.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-orange-100 text-brand-orange rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">2</span>
+                            <div><strong class="text-gray-800">Adicione:</strong> Coloque os salgados congelados com muito cuidado.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-orange-100 text-brand-orange rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">3</span>
+                            <div><strong class="text-gray-800">Abaixe o Fogo:</strong> Reduza a temperatura para fritar por igual.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-orange-100 text-brand-orange rounded-full w-8 h-8 flex items-center justify-center font-bold shrink-0 mr-3 mt-0.5">4</span>
+                            <div><strong class="text-gray-800">Aguarde 5 Minutos:</strong> Logo estarão prontos, dourados e crocantes.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-brand-light pt-16 pb-8 mt-auto border-t-[10px] border-brand-orange">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="font-display text-4xl mb-6 text-brand-cream">SABRONE</h2>
+            <p class="max-w-md mx-auto text-gray-300 mb-8 font-light">Especialistas em salgados congelados com sabor de festa. O melhor de São José do Rio Preto direto para sua casa.</p>
+            
+            <div class="flex justify-center items-center space-x-8 mb-10">
+                <a href="https://www.instagram.com/sabronesalgados" target="_blank" class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-600 hover:text-white transition-all transform hover:scale-110">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="https://wa.me/5517991315668" target="_blank" class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all transform hover:scale-110">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4 max-w-xl mx-auto text-sm text-gray-300 bg-black/20 p-6 rounded-2xl mb-8">
+                <div class="flex items-center justify-center md:justify-start">
+                    <i class="fas fa-map-marker-alt mr-3 text-brand-orange text-lg"></i> São José do Rio Preto, SP
+                </div>
+                <div class="flex items-center justify-center md:justify-start">
+                    <i class="fas fa-phone-alt mr-3 text-brand-orange text-lg"></i> (17) 99131-5668
+                </div>
+            </div>
+            
+            <p class="text-xs text-gray-500 uppercase tracking-wider">&copy; 2026 Sabrone Salgados Congelados.<br>Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let carrinho = [];
+        
+        const precos = {
+            'oleo': 30.00,
+            'airfryer': 35.00
+        };
+
+        const nomesPreparo = {
+            'oleo': 'Fritura no Óleo',
+            'airfryer': 'Airfryer'
+        };
+
+        function formatarMoeda(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function adicionarAoCarrinho() {
+            const preparoInput = document.querySelector('input[name="preparo"]:checked').value;
+            const saborSelect = document.getElementById('sabor');
+            const sabor = saborSelect.options[saborSelect.selectedIndex].text;
+            const quantidade = parseInt(document.getElementById('quantidade').value);
+
+            if (quantidade < 1 || isNaN(quantidade)) {
+                alert("Por favor, insira uma quantidade válida.");
+                return;
+            }
+
+            const precoUnitario = precos[preparoInput];
+            const subtotal = precoUnitario * quantidade;
+
+            // Simple collision check - if same flavor and preparation type exists, just update quantity
+            const itemExistente = carrinho.find(i => i.preparo === preparoInput && i.sabor === sabor);
+            
+            if (itemExistente) {
+                itemExistente.quantidade += quantidade;
+                itemExistente.subtotal = itemExistente.quantidade * itemExistente.precoUnitario;
+            } else {
+                const item = {
+                    id: Date.now(),
+                    preparo: preparoInput,
+                    nomePreparo: nomesPreparo[preparoInput],
+                    sabor: sabor,
+                    quantidade: quantidade,
+                    precoUnitario: precoUnitario,
+                    subtotal: subtotal
+                };
+                carrinho.push(item);
+            }
+
+            atualizarCarrinho();
+            
+            // Visual feedback
+            const btn = document.querySelector('button[onclick="adicionarAoCarrinho()"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check mr-2"></i> Adicionado!';
+            btn.classList.add('bg-green-500');
+            btn.classList.remove('bg-brand-orange', 'hover:bg-orange-600');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-green-500');
+                btn.classList.add('bg-brand-orange', 'hover:bg-orange-600');
+                document.getElementById('quantidade').value = 1; // Reset quantity
+            }, 1000);
+        }
+
+        function removerItem(id) {
+            carrinho = carrinho.filter(item => item.id !== id);
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const container = document.getElementById('carrinho-items');
+            const emptyState = document.getElementById('carrinho-vazio');
+            const btnEnviar = document.getElementById('btn-enviar');
+            const totalElement = document.getElementById('total-pedido');
+
+            if (carrinho.length === 0) {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                btnEnviar.disabled = true;
+                totalElement.textContent = "R$ 0,00";
+                return;
+            }
+
+            container.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            btnEnviar.disabled = false;
+
+            let html = '';
+            let total = 0;
+
+            carrinho.forEach(item => {
+                total += item.subtotal;
+                const icon = item.preparo === 'airfryer' ? '<i class="fas fa-wind text-blue-500 mr-1"></i>' : '<i class="fas fa-fire text-brand-orange mr-1"></i>';
+                
+                html += `
+                    <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-gray-100 shadow-sm animate-fade-in">
+                        <div class="flex-grow pr-3">
+                            <div class="font-bold text-gray-800 leading-tight">${item.quantidade}x ${item.sabor}</div>
+                            <div class="text-xs text-gray-500 mt-1 flex items-center">${icon} ${item.nomePreparo} - ${formatarMoeda(item.precoUnitario)}/pct</div>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <div class="font-bold text-brand-orange text-lg">${formatarMoeda(item.subtotal)}</div>
+                            <button onclick="removerItem(${item.id})" class="text-xs text-red-400 hover:text-red-600 mt-1 font-semibold transition-colors"><i class="fas fa-trash-alt mr-1"></i>Remover</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalElement.textContent = formatarMoeda(total);
+        }
+
+        function enviarWhatsApp() {
+            if (carrinho.length === 0) return;
+
+            let mensagem = "Olá Sabrone!. Gostaria de fazer um pedido:%0A%0A";
+            let total = 0;
+
+            carrinho.forEach((item, index) => {
+                total += item.subtotal;
+                let iconePreparo = item.preparo === 'airfryer';
+                mensagem += `*${item.quantidade}x* ${item.sabor}%0A`;
+                mensagem += `↳ Preparo: ${iconePreparo} ${item.nomePreparo}%0A`;
+                mensagem += `↳ Subtotal: ${formatarMoeda(item.subtotal)}%0A%0A`;
+            });
+
+            mensagem += `*Total do Pedido: ${formatarMoeda(total)}*%0A%0A`;
+            mensagem += "Cidade: São José do Rio Preto. Aguardo o retorno para combinar a entrega/retirada e o pagamento. Obrigado!";
+
+            const telefone = "5517991315668";
+            const url = `https://wa.me/${telefone}?text=${mensagem}`;
+            
+            window.open(url, '_blank');
+        }
+        
+        // Add subtle animation utility via JS injection to style
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+            .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
